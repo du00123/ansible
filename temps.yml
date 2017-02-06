@@ -1,0 +1,7 @@
+---
+- hosts: server2.abc.com
+  user: root
+  sudo: yes
+  tasks:
+     - name: copy j2 files
+       template: src=/etc/ansible/tmp.j2 dest=/etc/temp

@@ -1,0 +1,12 @@
+---
+- hosts: server2.abc.com
+  user: root
+  sudo: yes
+  gather_facts: yes
+  tasks:
+     - name: install httpd telnet
+       yum: name={{item}} state=latest
+       with_items:
+           - telnet
+           - httpd
+            

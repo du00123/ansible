@@ -1,0 +1,5 @@
+---
+- hosts: server2.abc.com
+  tasks:
+       - name: start telnet
+         service: name=telnet state=running

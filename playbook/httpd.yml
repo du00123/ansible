@@ -1,0 +1,20 @@
+---
+- hosts: server2.abc.com
+  user: root
+  sudo: yes
+  gather_facts: yes
+
+  tasks:
+   - name: install httpd
+     yum: name=httpd state=present
+   - name: pause
+     pause:
+      prompt: press enter
+   - name: starting the apache services
+     service: name=httpd state=started 
+#   - name: register output
+     register: result 
+   - debug: var=result
+  
+
+

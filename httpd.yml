@@ -3,23 +3,6 @@
   user: root
   sudo: yes
   gather_facts: yes
-  vars:
-      pkg1: httpd
-  vars_files:
-    - /etc/ansible/akil.yml
-  vars_prompt:
-      - name: pkg3
-        prompt: enter pkg3
   tasks:
-  - name: httpd server install
-    yum: name={{pkg1}} state=present
-  - name: install lynx
-    yum: name={{pkg2}} state=present
-  - name: telnet install
-    yum: name={{pkg3}} state=present
-  - name: copy the index file
-    copy: src=/root/index.html dest=/var/www/html/index.html
-  - name: service start
-    service: name=httpd state=running
-    register: result
-  - debug: var=result
+   - name: httpd server install
+     yum: name=httpd state=present

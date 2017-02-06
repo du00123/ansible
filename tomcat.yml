@@ -1,0 +1,21 @@
+---
+- hosts: server2.abc.com
+  user: root
+  sudo: yes
+  gather_facts: yes
+  tasks:
+    - name: download tomcat
+      command: wget http://redrockdigimark.com/apachemirror/tomcat/tomcat-7/v7.0.73/bin/apache-tomcat-7.0.73.tar.gz
+    - name: creating directory
+      file: path=/tmp/tomcat state=directory mode=0755
+    #- name: moveing tar file to dest
+   #   command: mv /root/apache-tomcat-7.0.73.tar.gz /tmp/tomcat
+    - name: unarch tar file
+      unarchive: src=/tmp/apache-tomcat-7.0.73.tar.gz dest=/tmp/tomcat
+    - name: install java
+      yum: name=java-1.8.0-openjdk state=present
+    - name: start tomcat services
+      command: nohup /tmp/tomcat/apache-tomcat-7.0.73/bin/catalina.sh start 
+     
+  
+
